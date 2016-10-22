@@ -23,7 +23,7 @@
 近期做的題目都在這，但有一些舊的題解（其中部份有誤）在我的 `gist <https://gist.github.com/amoshyc>`_ 上
 等我有空會把他們移過來。
 
-如果你在這發現任何錯誤，歡迎發 issue 至 `github <https://github.com/amoshyc/ojsolution>`_
+如果你在這發現任何錯誤，歡迎發 issue 至 `github <https://github.com/amoshyc/CPsolution>`_
 
 我常用的 OJ 的帳號為
 
