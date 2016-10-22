@@ -227,12 +227,12 @@ dummy:
 .PHONY: upload
 MSG = "Build at $(shell /bin/date '+%Y-%m-%d %H-%M-%S')"
 upload:
+	make clean
 	make html
 	@echo
 	rm -rf ./docs/*
 	cp -r ./build/html/* ./docs/
 	touch ./docs/.nojekyll
-	rm -rf ./build/
 	@echo
 	git add -A
 	git commit -m $(MSG)
