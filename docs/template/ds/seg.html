@@ -271,88 +271,84 @@
 76
 77
 78
-79
-80
-81</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">int</span> <span class="n">MAX_N</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">;</span>
-<span class="k">const</span> <span class="kt">int</span> <span class="n">MAX_NN</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">20</span><span class="p">);</span> <span class="c1">// should be bigger than MAX_N</span>
+79</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MAX_N</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MAX_NN</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">20</span><span class="p">);</span> <span class="c1">// bigger than MAX_N</span>
 
-<span class="kt">int</span> <span class="n">N</span><span class="p">;</span>
-<span class="n">ll</span> <span class="n">inp</span><span class="p">[</span><span class="n">MAX_N</span><span class="p">];</span>
+<span class="k">struct</span> <span class="n">SegTree</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">NN</span><span class="p">;</span> <span class="c1">// size of tree</span>
+    <span class="n">ll</span> <span class="n">dflt</span><span class="p">;</span> <span class="c1">// default val</span>
+    <span class="n">ll</span> <span class="n">seg</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">MAX_NN</span><span class="p">];</span> <span class="c1">// 0-based index, 2 * MAX_NN - 1 in fact</span>
+    <span class="n">ll</span> <span class="n">lazy</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">MAX_NN</span><span class="p">];</span> <span class="c1">// 0-based index, 2 * MAX_NN - 1 in fact</span>
+    <span class="c1">// lazy[u] != 0 &lt;-&gt;</span>
+    <span class="c1">// substree of u (u not inclued) is not up-to-date (it&#39;s dirty)</span>
 
-<span class="kt">int</span> <span class="n">NN</span><span class="p">;</span>
-<span class="n">ll</span> <span class="n">seg</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">MAX_NN</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
-<span class="n">ll</span> <span class="n">lazy</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">MAX_NN</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span> <span class="c1">// lazy[u] != 0 : the subtree of u (u not included) is not up-to-date</span>
-
-<span class="kt">void</span> <span class="nf">seg_gather</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">seg</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">seg</span><span class="p">[</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">seg</span><span class="p">[</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">seg_push</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">seg</span><span class="p">[</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="n">l</span><span class="p">)</span> <span class="o">*</span> <span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
-        <span class="n">seg</span><span class="p">[</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
-
-        <span class="n">lazy</span><span class="p">[</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
-        <span class="n">lazy</span><span class="p">[</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
-        <span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">seg_init</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">NN</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">NN</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">)</span>
-        <span class="n">NN</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
-
-    <span class="n">memset</span><span class="p">(</span><span class="n">seg</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">seg</span><span class="p">));</span>    <span class="c1">// val that won&#39;t affect result</span>
-    <span class="n">memset</span><span class="p">(</span><span class="n">lazy</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">lazy</span><span class="p">));</span>  <span class="c1">// val that won&#39;t affect result</span>
-    <span class="n">memcpy</span><span class="p">(</span><span class="n">seg</span> <span class="o">+</span> <span class="n">NN</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inp</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">ll</span><span class="p">)</span> <span class="o">*</span> <span class="n">N</span><span class="p">);</span> <span class="c1">// fill in leaves</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">seg_build</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">u</span> <span class="o">&gt;=</span> <span class="n">NN</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// leaf</span>
-        <span class="k">return</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="nf">init</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">ll</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">dflt</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+        <span class="n">NN</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="k">while</span> <span class="p">(</span><span class="n">NN</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="n">NN</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">fill</span><span class="p">(</span><span class="n">seg</span><span class="p">,</span> <span class="n">seg</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">NN</span><span class="p">,</span> <span class="n">dflt</span><span class="p">);</span>
+        <span class="n">fill</span><span class="p">(</span><span class="n">lazy</span><span class="p">,</span> <span class="n">lazy</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">NN</span><span class="p">,</span> <span class="n">dflt</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="n">seg_build</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="n">seg_build</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">);</span>
-    <span class="n">seg_gather</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">seg_update</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">delta</span><span class="p">,</span> <span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&gt;=</span> <span class="n">b</span> <span class="o">||</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="nf">gather</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">seg</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">seg</span><span class="p">[</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">seg</span><span class="p">[</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">];</span>
     <span class="p">}</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;=</span> <span class="n">l</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">seg</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">l</span><span class="p">)</span> <span class="o">*</span> <span class="n">delta</span><span class="p">;</span>
-        <span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta</span><span class="p">;</span>
-        <span class="k">return</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="nf">push</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+            <span class="n">seg</span><span class="p">[</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="n">l</span><span class="p">)</span> <span class="o">*</span> <span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+            <span class="n">seg</span><span class="p">[</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+
+            <span class="n">lazy</span><span class="p">[</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+            <span class="n">lazy</span><span class="p">[</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+            <span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="n">seg_push</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
-    <span class="n">seg_update</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">);</span>
-    <span class="n">seg_update</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
-    <span class="n">seg_gather</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="n">ll</span> <span class="nf">seg_query</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&gt;=</span> <span class="n">b</span> <span class="o">||</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="nf">build</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="n">build</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">);</span>
+        <span class="n">build</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+        <span class="n">gather</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;=</span> <span class="n">l</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">seg</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+    <span class="n">ll</span> <span class="nf">query</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&gt;=</span> <span class="n">b</span> <span class="o">||</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">a</span><span class="p">)</span> <span class="k">return</span> <span class="n">dflt</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&gt;=</span> <span class="n">a</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">)</span> <span class="k">return</span> <span class="n">seg</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="n">push</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+        <span class="n">ll</span> <span class="n">res1</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">);</span>
+        <span class="n">ll</span> <span class="n">res2</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+        <span class="n">gather</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span> <span class="c1">// data is dirty since previous push</span>
+        <span class="k">return</span> <span class="n">res1</span> <span class="o">+</span> <span class="n">res2</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="n">seg_push</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
-    <span class="n">ll</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="n">ans</span> <span class="o">+=</span> <span class="n">seg_query</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">);</span>
-    <span class="n">ans</span> <span class="o">+=</span> <span class="n">seg_query</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
-    <span class="n">seg_gather</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+    <span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&gt;=</span> <span class="n">b</span> <span class="o">||</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">a</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&gt;=</span> <span class="n">a</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">seg</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">l</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span> <span class="c1">// update u and</span>
+            <span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+=</span> <span class="n">x</span><span class="p">;</span> <span class="c1">// set subtree u is not up-to-date</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="n">push</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+        <span class="n">update</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">);</span>
+        <span class="n">update</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+        <span class="n">gather</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span> <span class="c1">// remember this</span>
+    <span class="p">}</span>
+<span class="p">};</span>
 
-    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="n">SegTree</span> <span class="n">seg</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">seg</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">A</span> <span class="o">+</span> <span class="n">N</span><span class="p">,</span> <span class="n">seg</span><span class="p">.</span><span class="n">seg</span> <span class="o">+</span> <span class="n">seg</span><span class="p">.</span><span class="n">NN</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">seg</span><span class="p">.</span><span class="n">build</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">seg</span><span class="p">.</span><span class="n">NN</span><span class="p">);</span>
+
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
@@ -464,7 +460,7 @@
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 
     <span class="n">seg</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">INF</span><span class="p">);</span>
-    <span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">A</span> <span class="o">+</span> <span class="n">N</span><span class="p">,</span> <span class="n">seg</span> <span class="o">+</span> <span class="n">seg</span><span class="p">.</span><span class="n">NN</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">A</span> <span class="o">+</span> <span class="n">N</span><span class="p">,</span> <span class="n">seg</span><span class="p">.</span><span class="n">seg</span> <span class="o">+</span> <span class="n">seg</span><span class="p">.</span><span class="n">NN</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
     <span class="n">seg</span><span class="p">.</span><span class="n">build</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">seg</span><span class="p">.</span><span class="n">NN</span><span class="p">);</span>
 
 <span class="p">}</span>
@@ -476,7 +472,7 @@
 <blockquote>
 <div><ul class="simple">
 <li>[單點更新] <a class="reference external" href="http://codepad.org/cQItxKrb">poj1769</a></li>
-<li>[延遲標記] <a class="reference external" href="http://codepad.org/ITp1iOPE">poj3468</a></li>
+<li>[延遲標記] <a class="reference external" href="http://codepad.org/pLLfo3d6">poj3468</a></li>
 </ul>
 </div></blockquote>
 </div>
