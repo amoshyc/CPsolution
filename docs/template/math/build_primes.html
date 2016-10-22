@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>質數表 &mdash; amoshyc&#39;s CPsolution 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/css/mine.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="amoshyc&#39;s CPsolution 1.0 documentation" href="../../index.html"/>
+        <link rel="up" title="Math" href="index.html"/>
+        <link rel="next" title="Extgcd" href="extgcd.html"/>
+        <link rel="prev" title="FFT" href="fft.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> amoshyc's CPsolution
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorials.html">1. 常用演算法教學</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cf/cf.html">2. CF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poj/poj.html">3. POJ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../uva/uva.html">4. UVA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ptc/ptc.html">5. PTC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other/other.html">6. Other</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../template.html">7. Template</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ds/index.html">Data Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../graph/index.html">Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tree/index.html">Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dp/index.html">DP</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Math</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fast_pow.html">快速冪</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fast_pow_matrix.html">矩陣快速冪</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matrix_det.html">Matrix Determinant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gauss_jordan.html">Gaussian Jordan Elimination</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fft.html">FFT</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">質數表</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">程式碼</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">模板驗證</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="extgcd.html">Extgcd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="crt.html">Chinese Remainder Theorem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="combinations.html">排列組合</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../string/index.html">String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../search/index.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/index.html">Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/index.html">Other</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tags.html">8. Tags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cheatsheet.html">9. Cheatsheet</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">amoshyc's CPsolution</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../template.html">7. Template</a> &raquo;</li>
+      
+          <li><a href="index.html">Math</a> &raquo;</li>
+      
+    <li>質數表</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/template/math/build_primes.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1><a class="toc-backref" href="#id4">質數表</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar">
+<p class="first sidebar-title">Tags</p>
+<ul class="last simple">
+<li><code class="docutils literal"><span class="pre">tag_prime</span></code></li>
+<li><code class="docutils literal"><span class="pre">tag_template</span></code></li>
+</ul>
+</div>
+<div class="contents topic" id="toc">
+<p class="topic-title first">TOC</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id4">質數表</a><ul>
+<li><a class="reference internal" href="#id2" id="id5">程式碼</a></li>
+<li><a class="reference internal" href="#id3" id="id6">模板驗證</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id5">程式碼</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="n">ll</span> <span class="n">MAX_NUM</span> <span class="o">=</span> <span class="mf">1e6</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">is_prime</span><span class="p">[</span><span class="n">MAX_NUM</span><span class="p">];</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">ll</span><span class="o">&gt;</span> <span class="n">primes</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">init_primes</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">fill</span><span class="p">(</span><span class="n">is_prime</span><span class="p">,</span> <span class="n">is_prime</span> <span class="o">+</span> <span class="n">MAX_NUM</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+    <span class="n">is_prime</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">is_prime</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">ll</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">MAX_NUM</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">is_prime</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">primes</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">ll</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">MAX_NUM</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="n">i</span><span class="p">)</span>
+                <span class="n">is_prime</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id6">模板驗證</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="extgcd.html" class="btn btn-neutral float-right" title="Extgcd" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fft.html" class="btn btn-neutral" title="FFT" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, amoshyc.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

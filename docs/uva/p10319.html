@@ -1,0 +1,549 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>[UVA] 10319. Manhattan &mdash; amoshyc&#39;s CPsolution 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/mine.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="amoshyc&#39;s CPsolution 1.0 documentation" href="../index.html"/>
+        <link rel="up" title="4. UVA" href="uva.html"/>
+        <link rel="next" title="[UVA] 10369. Arctic Network" href="p10369.html"/>
+        <link rel="prev" title="[UVA] 10181. 15-Puzzle Problem" href="p10181.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> amoshyc's CPsolution
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorials.html">1. 常用演算法教學</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cf/cf.html">2. CF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../poj/poj.html">3. POJ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="uva.html">4. UVA</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="p501.html">[UVA] 501. Black Box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p684.html">[UVA] 684. Integral Determinant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p1449.html">[UVA] 1449. Dominating Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p10032.html">[UVA] 10032. Tug of War</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p10181.html">[UVA] 10181. 15-Puzzle Problem</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">[UVA] 10319. Manhattan</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">題目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#specification">Specification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ac-code">AC Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="p10369.html">[UVA] 10369. Arctic Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p11294.html">[UVA] 11294. Manhattan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p11354.html">[UVA] 11354. Bond</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ptc/ptc.html">5. PTC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../other/other.html">6. Other</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../template/template.html">7. Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags.html">8. Tags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheatsheet.html">9. Cheatsheet</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">amoshyc's CPsolution</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="uva.html">4. UVA</a> &raquo;</li>
+      
+    <li>[UVA] 10319. Manhattan</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/uva/p10319.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="uva-10319-manhattan">
+<h1><a class="toc-backref" href="#id4">[UVA] 10319. Manhattan</a><a class="headerlink" href="#uva-10319-manhattan" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar">
+<p class="first sidebar-title">Tags</p>
+<ul class="last simple">
+<li><code class="docutils literal"><span class="pre">tag_2sat</span></code></li>
+</ul>
+</div>
+<div class="contents topic" id="toc">
+<p class="topic-title first">TOC</p>
+<ul class="simple">
+<li><a class="reference internal" href="#uva-10319-manhattan" id="id4">[UVA] 10319. Manhattan</a><ul>
+<li><a class="reference internal" href="#id2" id="id5">題目</a></li>
+<li><a class="reference internal" href="#specification" id="id6">Specification</a></li>
+<li><a class="reference internal" href="#id3" id="id7">分析</a></li>
+<li><a class="reference internal" href="#ac-code" id="id8">AC Code</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2><a class="reference external" href="https://uva.onlinejudge.org/external/103/p10319.pdf">題目</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>假設有一個城市是由 H 條東西向的路 r[]，與 W 條南北向的路組成 c[]。
+這些路交出 H * W 個交點，每個交點由一條 r，一條 c 定義。
+請為每條路指定方向（r 向東或向西、c 向南或向北）。</p>
+<p>邊有方向後，兩個交點之間若存在一條路徑，只轉彎一次，即可從其中一個點到達另一個點，
+我們稱這兩個交點間有 simple path。</p>
+<p>現給定 M 個點對（r1[], c1[], r2[], c2[]）
+請問對於所有邊，存不存在一種方向的 assignment，
+使得交點 (r1[i], c1[i]), 與交點 (r2[i], c2[i]) 之間存在一條以上的 simple path</p>
+</div>
+<div class="section" id="specification">
+<h2><a class="toc-backref" href="#id6">Specification</a><a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span> <span class="o">&lt;=</span> <span class="mi">30</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id7">分析</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">2-sat</p>
+</div>
+<p>把每個 r，每個 c 視為一個邏輯變數， <strong>向東向南視為 True</strong> ，則對於點對</p>
+<div class="math">
+\[r_1, c_1, r_2, c_2 \quad (r_1 &lt; r_2 ,\, c_1 &lt; c_2)\]</div>
+<p>我們可以寫出等式（見下圖左）：</p>
+<div class="math">
+\[(r_1 \land c_2) \lor (c_1 \land r_2)\]</div>
+<img alt="http://i.imgur.com/7qjir1p.jpg" src="http://i.imgur.com/7qjir1p.jpg" />
+<p>利用 <span class="math">\(p \lor (q \land r) \leftrightarrow ((p \land q) \lor (p \land r))\)</span> 兩次，可以將式子改寫為：</p>
+<div class="math">
+\[(r_1 \lor c_1) \land
+(c_2 \lor c_1) \land
+(r_1 \lor r_2) \land
+(c_2 \lor r_2)\]</div>
+<p>這就可以使用 2-sat 來求解了。</p>
+<p>如果有 <span class="math">\(r_1 &gt; r_2\)</span> 或 <span class="math">\(c_1 &gt; c_2\)</span> 的情況，將 <strong>另一個變數</strong> 取 complement 即可，如上圖右。
+另外得特判掉 <span class="math">\(r_1 = r_2\)</span> 與 <span class="math">\(c_1 = c_2\)</span> 的情況。
+此時兩個交點在同一條線上，只有這條邊的方向被確定。細節請看程式碼</p>
+</div>
+<div class="section" id="ac-code">
+<h2><a class="toc-backref" href="#id8">AC Code</a><a class="headerlink" href="#ac-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MAX_H</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MAX_W</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MAX_V</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">MAX_H</span> <span class="o">+</span> <span class="n">MAX_W</span><span class="p">);</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">INF</span> <span class="o">=</span> <span class="mh">0x3f3f3f3f</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">dfn_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">scc_cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">dfn</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">low</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">belong</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
+<span class="kt">bool</span> <span class="n">in_st</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">g</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">st</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">scc</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">dfn</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">low</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfn_idx</span><span class="o">++</span><span class="p">;</span>
+    <span class="n">st</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+    <span class="n">in_st</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="kt">int</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">size</span><span class="p">());</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">const</span> <span class="kt">int</span> <span class="n">u</span> <span class="o">=</span> <span class="n">g</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">dfn</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">scc</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+            <span class="n">low</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">low</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">low</span><span class="p">[</span><span class="n">u</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">in_st</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">low</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">low</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">dfn</span><span class="p">[</span><span class="n">u</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">dfn</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">==</span> <span class="n">low</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">k</span><span class="p">;</span>
+        <span class="k">do</span> <span class="p">{</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">st</span><span class="p">.</span><span class="n">back</span><span class="p">();</span> <span class="n">st</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+            <span class="n">in_st</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="n">belong</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">scc_cnt</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">k</span> <span class="o">!=</span> <span class="n">v</span><span class="p">);</span>
+        <span class="n">scc_cnt</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">tarjan</span><span class="p">(</span><span class="kt">int</span> <span class="n">V</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// scc 建立的順序即為反向的拓璞排序</span>
+    <span class="n">st</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+    <span class="n">fill</span><span class="p">(</span><span class="n">dfn</span><span class="p">,</span> <span class="n">dfn</span> <span class="o">+</span> <span class="n">V</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">fill</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">low</span> <span class="o">+</span> <span class="n">V</span><span class="p">,</span> <span class="n">INF</span><span class="p">);</span>
+    <span class="n">dfn_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">scc_cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">v</span> <span class="o">&lt;</span> <span class="n">V</span><span class="p">;</span> <span class="n">v</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">dfn</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">scc</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// [0, 2H) : rows</span>
+    <span class="c1">// [2H, 2H + 2W] : cols</span>
+
+    <span class="kt">int</span> <span class="n">TC</span><span class="p">;</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">TC</span><span class="p">);</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">TC</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">M</span><span class="p">;</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d %d %d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">H</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">W</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">M</span><span class="p">);</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">H</span> <span class="o">+</span> <span class="n">W</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="n">g</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">clear</span><span class="p">();</span>
+
+        <span class="k">while</span> <span class="p">(</span><span class="n">M</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">r1</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">c2</span><span class="p">;</span>
+            <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d %d %d %d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">r1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">r2</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c2</span><span class="p">);</span>
+            <span class="n">r1</span><span class="o">--</span><span class="p">;</span> <span class="n">c1</span><span class="o">--</span><span class="p">;</span> <span class="n">r2</span><span class="o">--</span><span class="p">;</span> <span class="n">c2</span><span class="o">--</span><span class="p">;</span>
+
+            <span class="n">r1</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">c1</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">r2</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">c2</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
+            <span class="n">c1</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">H</span><span class="p">;</span> <span class="n">c2</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">H</span><span class="p">;</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">r1</span> <span class="o">&gt;</span> <span class="n">r2</span><span class="p">)</span> <span class="p">{</span> <span class="n">c1</span> <span class="o">^=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">c2</span> <span class="o">^=</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">c1</span> <span class="o">&gt;</span> <span class="n">c2</span><span class="p">)</span> <span class="p">{</span> <span class="n">r1</span> <span class="o">^=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">r2</span> <span class="o">^=</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">r1</span> <span class="o">==</span> <span class="n">r2</span> <span class="o">&amp;&amp;</span> <span class="n">c1</span> <span class="o">==</span> <span class="n">c2</span><span class="p">)</span>
+                <span class="k">continue</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">r1</span> <span class="o">==</span> <span class="n">r2</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// r1 = T</span>
+                <span class="n">g</span><span class="p">[</span><span class="n">r1</span> <span class="o">^</span> <span class="mi">1</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">r1</span><span class="p">);</span>
+                <span class="k">continue</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">c1</span> <span class="o">==</span> <span class="n">c2</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">g</span><span class="p">[</span><span class="n">c1</span> <span class="o">^</span> <span class="mi">1</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span>
+                <span class="k">continue</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="c1">// (r1 and c2) or (c1 and r2)</span>
+            <span class="c1">// = (r1 or c1) and (c2 or c1) and</span>
+            <span class="c1">//   (r1 or r2) and (c2 or r2)</span>
+
+            <span class="n">g</span><span class="p">[</span><span class="n">r1</span> <span class="o">^</span> <span class="mi">1</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span>
+            <span class="n">g</span><span class="p">[</span><span class="n">c1</span> <span class="o">^</span> <span class="mi">1</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">r1</span><span class="p">);</span>
+
+            <span class="n">g</span><span class="p">[</span><span class="n">c2</span> <span class="o">^</span> <span class="mi">1</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span>
+            <span class="n">g</span><span class="p">[</span><span class="n">c1</span> <span class="o">^</span> <span class="mi">1</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">c2</span><span class="p">);</span>
+
+            <span class="n">g</span><span class="p">[</span><span class="n">r1</span> <span class="o">^</span> <span class="mi">1</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">r2</span><span class="p">);</span>
+            <span class="n">g</span><span class="p">[</span><span class="n">r2</span> <span class="o">^</span> <span class="mi">1</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">r1</span><span class="p">);</span>
+
+            <span class="n">g</span><span class="p">[</span><span class="n">c2</span> <span class="o">^</span> <span class="mi">1</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">r2</span><span class="p">);</span>
+            <span class="n">g</span><span class="p">[</span><span class="n">r2</span> <span class="o">^</span> <span class="mi">1</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">c2</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">tarjan</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">H</span> <span class="o">+</span> <span class="n">W</span><span class="p">));</span>
+
+        <span class="kt">bool</span> <span class="n">ok</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">H</span> <span class="o">+</span> <span class="n">W</span><span class="p">);</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">belong</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">belong</span><span class="p">[</span><span class="n">i</span> <span class="o">^</span> <span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+                <span class="n">ok</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">puts</span><span class="p">((</span><span class="n">ok</span><span class="p">)</span> <span class="o">?</span> <span class="s">&quot;Yes&quot;</span> <span class="o">:</span> <span class="s">&quot;No&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="p10369.html" class="btn btn-neutral float-right" title="[UVA] 10369. Arctic Network" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="p10181.html" class="btn btn-neutral" title="[UVA] 10181. 15-Puzzle Problem" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, amoshyc.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

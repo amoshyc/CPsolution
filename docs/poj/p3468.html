@@ -1,0 +1,541 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>[POJ] 3468. A Simple Problem with Integers &mdash; amoshyc&#39;s CPsolution 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/mine.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="amoshyc&#39;s CPsolution 1.0 documentation" href="../index.html"/>
+        <link rel="up" title="3. POJ" href="poj.html"/>
+        <link rel="next" title="[POJ] 3469. Dual Core CPU" href="p3469.html"/>
+        <link rel="prev" title="[POJ] 3420. Quad Tiling" href="p3420.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> amoshyc's CPsolution
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorials.html">1. 常用演算法教學</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cf/cf.html">2. CF</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="poj.html">3. POJ</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="p1276.html">[POJ] 1276. Cash Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p1308.html">[POJ] 1308. Is It A Tree?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p1330.html">[POJ] 1330. Nearest Common Ancestors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p1442.html">[POJ] 1442. Black Box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p1769.html">[POJ] 1769. Minimizing maximizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p1984.html">[POJ] 1984. Navigation Nightmare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p1988.html">[POJ] 1988. Cube Stacking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p1990.html">[POJ] 1990. MooFest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p2104.html">[POJ] 2104. K-th Number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p2135.html">[POJ] 2135. Farm Tour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p2186.html">[POJ] 2186. Popular Cows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p2230.html">[POJ] 2230. Watchcow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p2349.html">[POJ] 2349. Arctic Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p2441.html">[POJ] 2441. Arrange the Bulls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p2686.html">[POJ] 2686. Traveling by Stagecoach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p2836.html">[POJ] 2836. Rectangular Covering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p2891.html">[POJ] 2891. Strange Way to Express Integers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3041.html">[POJ] 3041. Asteroids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3045.html">[POJ] 3045. Cow Acrobats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3057.html">[POJ] 3057. Evacuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3171.html">[POJ] 3171. Cleaning Shifts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3233.html">[POJ] 3233. Matrix Power Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3254.html">[POJ] 3254. Corn Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3258.html">[POJ] 3258. River Hopscotch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3264.html">[POJ] 3264. Balanced Lineup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3273.html">[POJ] 3273. Monthly Expense</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3281.html">[POJ] 3281. Dining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3321.html">[POJ] 3321. Apple Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3368.html">[POJ] 3368. Frequent values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3420.html">[POJ] 3420. Quad Tiling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">[POJ] 3468. A Simple Problem with Integers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">題目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#specification">Specification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ac-code">AC Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="p3469.html">[POJ] 3469. Dual Core CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3565.html">[POJ] 3565. Ants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3580.html">[POJ] 3580. SuperMemo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3686.html">[POJ] 3686. The Windy&#8217;s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3734.html">[POJ] 3734. Blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3735.html">[POJ] 3735. Training little cats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3977.html">[POJ] 3977. Subset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../uva/uva.html">4. UVA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ptc/ptc.html">5. PTC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../other/other.html">6. Other</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../template/template.html">7. Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tags.html">8. Tags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheatsheet.html">9. Cheatsheet</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">amoshyc's CPsolution</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="poj.html">3. POJ</a> &raquo;</li>
+      
+    <li>[POJ] 3468. A Simple Problem with Integers</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/poj/p3468.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="poj-3468-a-simple-problem-with-integers">
+<h1><a class="toc-backref" href="#id4">[POJ] 3468. A Simple Problem with Integers</a><a class="headerlink" href="#poj-3468-a-simple-problem-with-integers" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar">
+<p class="first sidebar-title">Tags</p>
+<ul class="last simple">
+<li><code class="docutils literal"><span class="pre">tag_segment_tree</span></code></li>
+</ul>
+</div>
+<div class="contents topic" id="toc">
+<p class="topic-title first">TOC</p>
+<ul class="simple">
+<li><a class="reference internal" href="#poj-3468-a-simple-problem-with-integers" id="id4">[POJ] 3468. A Simple Problem with Integers</a><ul>
+<li><a class="reference internal" href="#id2" id="id5">題目</a></li>
+<li><a class="reference internal" href="#specification" id="id6">Specification</a></li>
+<li><a class="reference internal" href="#id3" id="id7">分析</a></li>
+<li><a class="reference internal" href="#ac-code" id="id8">AC Code</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2><a class="reference external" href="http://poj.org/problem?id=3468">題目</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>給定 N 個整數，Q 筆操作，每筆操作為:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">C</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span><span class="p">:</span> <span class="n">將</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span> <span class="n">每個數都加</span> <span class="n">c</span>
+<span class="mf">2.</span> <span class="n">Q</span> <span class="n">a</span> <span class="n">b</span><span class="p">:</span> <span class="n">輸出</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span> <span class="n">的區間和</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="specification">
+<h2><a class="toc-backref" href="#id6">Specification</a><a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">,</span> <span class="n">Q</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">5</span>
+<span class="o">-</span><span class="mi">10</span><span class="o">^</span><span class="mi">5</span> <span class="o">&lt;=</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">5</span>
+<span class="o">-</span><span class="mi">10</span><span class="o">^</span><span class="mi">9</span> <span class="o">&lt;=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">9</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id7">分析</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">裸線段樹 + 延遲標記</p>
+</div>
+<p>有區間更新，要用延遲標記，裸題。</p>
+</div>
+<div class="section" id="ac-code">
+<h2><a class="toc-backref" href="#id8">AC Code</a><a class="headerlink" href="#ac-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cstring&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MAX_N</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MAX_NN</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">20</span><span class="p">);</span> <span class="c1">// should be bigger than MAX_N</span>
+
+<span class="kt">int</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">;</span>
+<span class="n">ll</span> <span class="n">inp</span><span class="p">[</span><span class="n">MAX_N</span><span class="p">];</span>
+
+<span class="kt">int</span> <span class="n">NN</span><span class="p">;</span>
+<span class="n">ll</span> <span class="n">seg</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">MAX_NN</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+<span class="n">ll</span> <span class="n">lazy</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">MAX_NN</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span> <span class="c1">// lazy[u] != 0 : the subtree of u (u not included) is not up-to-date</span>
+
+<span class="kt">void</span> <span class="nf">seg_gather</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">seg</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">seg</span><span class="p">[</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">seg</span><span class="p">[</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">seg_push</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">seg</span><span class="p">[</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="n">l</span><span class="p">)</span> <span class="o">*</span> <span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+        <span class="n">seg</span><span class="p">[</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+
+        <span class="n">lazy</span><span class="p">[</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+        <span class="n">lazy</span><span class="p">[</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+        <span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">seg_init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">NN</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">NN</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">)</span>
+        <span class="n">NN</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
+
+    <span class="n">memset</span><span class="p">(</span><span class="n">seg</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">seg</span><span class="p">));</span>    <span class="c1">// val that won&#39;t affect result</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">lazy</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">lazy</span><span class="p">));</span>  <span class="c1">// val that won&#39;t affect result</span>
+    <span class="n">memcpy</span><span class="p">(</span><span class="n">seg</span> <span class="o">+</span> <span class="n">NN</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inp</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">ll</span><span class="p">)</span> <span class="o">*</span> <span class="n">N</span><span class="p">);</span> <span class="c1">// fill in leaves</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">seg_build</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">u</span> <span class="o">&gt;=</span> <span class="n">NN</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// leaf</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">seg_build</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">seg_build</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">seg_gather</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">seg_update</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">delta</span><span class="p">,</span> <span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&gt;=</span> <span class="n">b</span> <span class="o">||</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;=</span> <span class="n">l</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">seg</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">l</span><span class="p">)</span> <span class="o">*</span> <span class="n">delta</span><span class="p">;</span>
+        <span class="n">lazy</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">seg_push</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+    <span class="n">seg_update</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">);</span>
+    <span class="n">seg_update</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+    <span class="n">seg_gather</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">ll</span> <span class="nf">seg_query</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&gt;=</span> <span class="n">b</span> <span class="o">||</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;=</span> <span class="n">l</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">seg</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">seg_push</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+    <span class="n">ll</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">ans</span> <span class="o">+=</span> <span class="n">seg_query</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">);</span>
+    <span class="n">ans</span> <span class="o">+=</span> <span class="n">seg_query</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+    <span class="n">seg_gather</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d %d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">N</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">M</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%lld&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">inp</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+
+    <span class="n">seg_init</span><span class="p">();</span>
+    <span class="n">seg_build</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="n">M</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">char</span> <span class="n">c</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span> <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;C&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+            <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d %d %d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+            <span class="n">a</span><span class="o">--</span><span class="p">;</span> <span class="n">b</span><span class="o">--</span><span class="p">;</span>
+            <span class="n">seg_update</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NN</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
+            <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d %d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+            <span class="n">a</span><span class="o">--</span><span class="p">;</span> <span class="n">b</span><span class="o">--</span><span class="p">;</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%lld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">seg_query</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NN</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="p3469.html" class="btn btn-neutral float-right" title="[POJ] 3469. Dual Core CPU" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="p3420.html" class="btn btn-neutral" title="[POJ] 3420. Quad Tiling" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, amoshyc.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

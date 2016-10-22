@@ -23,6 +23,11 @@
 
 import sphinx_rtd_theme
 
+def setup(app):
+    app.add_stylesheet('css/mine.css')
+
+suppress_warnings = ['image.nonlocal_uri']
+
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
