@@ -15,10 +15,10 @@ Requirements
 1. python3-sphinx (``sudo dnf install python3-sphinx``)
 2. rtd-theme (``pip3 install sphinx_rtd_theme``)
 
-Installation
+Make a similar repo
 ========================
 
-1. ``git clone <repo> && cd <repo>``
+1. ``git clone <new repo> && cd <new repo>``
 2. ``sphinx-quickstart .``
 3. Append follow code to makefile.
 
@@ -53,3 +53,5 @@ Installation
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 5. Set the github repo to generate github pages from master/docs/
+
+6. You can now use ``make html`` to build and ``make upload`` to upload repo to github. You can find your output at ``https://<username>.github.io/<new repo>/``
