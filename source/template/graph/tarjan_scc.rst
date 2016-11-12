@@ -17,7 +17,9 @@ Tarjan SCC Algorithm
 .. code-block:: cpp
     :linenos:
 
-    const int MAX_V = ...;
+    #define sz(x) (int(x.size()))
+
+    const int MAX_V = 10000;
     const int INF = 0x3f3f3f3f;
     int V;
     vector<int> g[MAX_V];
@@ -30,34 +32,34 @@ Tarjan SCC Algorithm
     bool in_st[MAX_V];
     vector<int> st;
 
-    void scc(int v) {
-        dfn[v] = low[v] = dfn_idx++;
-        st.push_back(v);
-        in_st[v] = true;
+    void scc(int u) {
+        dfn[u] = low[u] = dfn_idx++;
+        st.push_back(u);
+        in_st[u] = true;
 
-        for (int i = 0; i < int(g[v].size()); i++) {
-            const int u = g[v][i];
-            if (dfn[u] == -1) {
-                scc(u);
-                low[v] = min(low[v], low[u]);
+        for (int i = 0; i < sz(g[u]); i++) {
+            const int v = g[u][i];
+            if (dfn[v] == -1) {
+                scc(v);
+                low[u] = min(low[u], low[v]);
             }
-            else if (in_st[u]) {
-                low[v] = min(low[v], dfn[u]);
+            else if (in_st[v]) {
+                low[u] = min(low[u], dfn[v]);
             }
         }
 
-        if (dfn[v] == low[v]) {
+        if (dfn[u] == low[u]) {
             int k;
             do {
                 k = st.back(); st.pop_back();
                 in_st[k] = false;
                 belong[k] = scc_cnt;
-            } while (k != v);
+            } while (k != u);
             scc_cnt++;
         }
     }
 
-    void tarjan() { // scc 建立的順序即為反向的拓璞排序
+    void tarjan() {
         st.clear();
         fill(dfn, dfn + V, -1);
         fill(low, low + V, INF);
