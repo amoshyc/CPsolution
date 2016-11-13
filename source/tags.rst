@@ -80,6 +80,8 @@ Graph
 - tag_connected_component
 - tag_2sat
 - tag_euler_cycle
+- tag_cut_vertex
+- tag_cut_edge
 
 ************************
 Math

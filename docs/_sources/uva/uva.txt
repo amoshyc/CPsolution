@@ -7,8 +7,10 @@ UVa Online Judge
 .. toctree::
     :maxdepth: 1
 
+    p315.rst
     p501.rst
     p684.rst
+    p796.rst
     p1449.rst
     p10032.rst
     p10181.rst

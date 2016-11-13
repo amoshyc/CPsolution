@@ -19,3 +19,5 @@ Graph
 
     min_btn.rst
     euler_cycle.rst
+
+    cut_vertex_edge.rst

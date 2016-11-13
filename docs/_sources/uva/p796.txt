@@ -1,0 +1,119 @@
+#####################################
+[UVA] 796. Critical Links
+#####################################
+
+.. sidebar:: Tags
+
+    - ``tag_cut_edge``
+
+.. contents:: TOC
+    :depth: 2
+
+*********************************************************************
+`題目 <https://uva.onlinejudge.org/external/7/796.pdf>`_
+*********************************************************************
+
+給定無向圖，輸出圖中所有 bridge(cut edge)。
+
+************************
+Specification
+************************
+
+::
+
+    1 <= V <= 100
+
+************************
+分析
+************************
+
+.. note:: 模版題
+
+************************
+AC Code
+************************
+
+.. code-block:: cpp
+    :linenos:
+
+    #include <bits/stdc++.h>
+    using namespace std;
+
+    #define st first
+    #define nd second
+    #define sz(x) (int(x.size()))
+    typedef pair<int, int> pii;
+
+    const int MAX_V = 100;
+    const int INF = 0x3f3f3f3f;
+
+    int dfn_idx;
+    int dfn[MAX_V];
+    int low[MAX_V];
+    vector<pii> cutE;
+
+    int V;
+    vector<int> g[MAX_V];
+
+    void dfs(int u, int p) {
+        dfn[u] = low[u] = dfn_idx++;
+
+        int cnt = 0;
+        for (int v : g[u]) {
+            if (v == p) continue;
+
+            if (dfn[v] == -1) {
+                cnt++;
+                dfs(v, u);
+                low[u] = min(low[u], low[v]);
+                // cut edge (bridge)
+                if (dfn[u] < low[v]) {
+                    cutE.push_back(pii(min(u, v), max(u, v)));
+                }
+            }
+            else {
+                low[u] = min(low[u], dfn[v]);
+            }
+        }
+    }
+
+    void find_cut() {
+        dfn_idx = 0;
+        fill(dfn, dfn + V, -1);
+        fill(low, low + V, INF);
+        cutE.clear();
+        for (int v = 0; v < V; v++) {
+            if (dfn[v] == -1) {
+                dfs(v, -1);
+            }
+        }
+    }
+
+    int main() {
+        while (scanf("%d", &V) != EOF) {
+            for (int v = 0; v < V; v++) {
+                g[v].clear();
+            }
+
+            for (int i = 0; i < V; i++) {
+                int u; scanf("%d", &u);
+                int s; scanf(" (%d)", &s);
+                while (s--) {
+                    int v; scanf(" %d", &v);
+                    g[u].push_back(v);
+                    g[v].push_back(u);
+                }
+            }
+
+            find_cut();
+
+            sort(cutE.begin(), cutE.end());
+            printf("%d critical links\n", sz(cutE));
+            for (pii e : cutE) {
+                printf("%d - %d\n", e.st, e.nd);
+            }
+            puts("");
+        }
+
+        return 0;
+    }

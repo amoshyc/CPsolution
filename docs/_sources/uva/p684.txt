@@ -35,7 +35,7 @@ Specification
 教學請參 `<http://blog.csdn.net/zhoufenqin/article/details/7779707>`_
 
 ************************
-AC Code 1
+AC Code
 ************************
 
 .. code-block:: cpp

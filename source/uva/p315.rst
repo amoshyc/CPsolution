@@ -1,0 +1,131 @@
+#####################################
+[UVA] 315. Network
+#####################################
+
+.. sidebar:: Tags
+
+    - ``tag_cut_vertex``
+
+.. contents:: TOC
+    :depth: 2
+
+*********************************************************************
+`題目 <https://uva.onlinejudge.org/external/3/315.pdf>`_
+*********************************************************************
+
+多筆測資，每筆測資給定一個圖，求有多少個割點（cut vertex, articulation point）？
+
+************************
+Specification
+************************
+
+::
+
+    1 <= V <= 100
+
+************************
+分析
+************************
+
+.. note:: 模版題
+
+************************
+AC Code
+************************
+
+.. code-block:: cpp
+    :linenos:
+
+    #include <bits/stdc++.h>
+    using namespace std;
+
+    #define st first
+    #define nd second
+    #define sz(x) (int(x.size()))
+    typedef pair<int, int> pii;
+
+    const int MAX_V = 100;
+    const int INF = 0x3f3f3f3f;
+
+    int dfn_idx;
+    int dfn[MAX_V];
+    int low[MAX_V];
+    bool iscutv[MAX_V];
+    vector<pii> cutE;
+
+    int V;
+    vector<int> g[MAX_V];
+
+    void dfs(int u, int p) {
+        dfn[u] = low[u] = dfn_idx++;
+
+        int cnt = 0;
+        for (int v : g[u]) {
+            if (v == p) continue;
+
+            if (dfn[v] == -1) {
+                cnt++;
+                dfs(v, u);
+                low[u] = min(low[u], low[v]);
+                // cut vertex (articulation point)
+                if ((p == -1 && cnt > 1) || (p != -1 && dfn[u] <= low[v])) {
+                    iscutv[u] = true;
+                }
+                // cut edge (bridge)
+                if (dfn[u] < low[v]) {
+                    cutE.push_back(pii(min(u, v), max(u, v)));
+                }
+            }
+            else {
+                low[u] = min(low[u], dfn[v]);
+            }
+        }
+    }
+
+    void find_cut() {
+        dfn_idx = 0;
+        fill(dfn, dfn + V, -1);
+        fill(low, low + V, INF);
+        fill(iscutv, iscutv + V , false);
+        cutE.clear();
+        for (int v = 0; v < V; v++) {
+            if (dfn[v] == -1) {
+                dfs(v, -1);
+            }
+        }
+    }
+
+    int main() {
+        ios::sync_with_stdio(false);
+        cin.tie(0);
+
+        while (cin >> V) {
+            if (V == 0) break;
+
+            for (int v = 0; v < V; v++)
+                g[v].clear();
+
+            string inp;
+            while (getline(cin, inp)) {
+                if (inp == "0") break;
+                istringstream iss(inp);
+                int u, v; iss >> u; u--;
+                while (iss >> v) {
+                    v--;
+                    g[u].push_back(v);
+                    g[v].push_back(u);
+                }
+            }
+
+            find_cut();
+            int cnt = 0;
+            for (int v = 0; v < V; v++) {
+                if (iscutv[v]) {
+                    cnt++;
+                }
+            }
+
+            cout << cnt << endl;
+        }
+        return 0;
+    }
