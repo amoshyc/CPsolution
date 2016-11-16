@@ -14,3 +14,4 @@ Math
     extgcd.rst
     crt.rst
     combinations.rst
+    index_of_diagonal.rst
