@@ -55,9 +55,6 @@ Cut Vertex/Edge
 .. code-block:: cpp
     :linenos:
 
-    #include <bits/stdc++.h>
-    using namespace std;
-
     #define st first
     #define nd second
     #define sz(x) (int(x.size()))
@@ -70,6 +67,7 @@ Cut Vertex/Edge
     int dfn[MAX_V];
     int low[MAX_V];
     bool iscutv[MAX_V];
+    vector<pii> cutE;
 
     int V;
     vector<int> g[MAX_V];
@@ -89,6 +87,10 @@ Cut Vertex/Edge
                 if ((p == -1 && cnt > 1) || (p != -1 && dfn[u] <= low[v])) {
                     iscutv[u] = true;
                 }
+                // cut edge (bridge)
+                if (dfn[u] < low[v]) {
+                    cutE.push_back(pii(min(u, v), max(u, v)));
+                }
             }
             else {
                 low[u] = min(low[u], dfn[v]);
@@ -101,6 +103,7 @@ Cut Vertex/Edge
         fill(dfn, dfn + V, -1);
         fill(low, low + V, INF);
         fill(iscutv, iscutv + V , false);
+        cutE.clear();
         for (int v = 0; v < V; v++) {
             if (dfn[v] == -1) {
                 dfs(v, -1);

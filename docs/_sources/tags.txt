@@ -32,6 +32,7 @@ Technique
 - tag_poset
 - tag_dilworth
 - tag_d&c
+- tag_sweep_line
 
 ************************
 Data Structure
