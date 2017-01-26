@@ -29,6 +29,7 @@ Educational Round
 .. toctree::
     :maxdepth: 1
 
+    #17 <cfedu17/index.rst>
     #16 <cfedu16/index.rst>
     #12 <cfedu12/index.rst>
     #9 <cfedu9/index.rst>
