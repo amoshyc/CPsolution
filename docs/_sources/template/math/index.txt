@@ -12,6 +12,7 @@ Math
     fft.rst
     build_primes.rst
     extgcd.rst
+    lucas.rst
     crt.rst
     combinations.rst
     index_of_diagonal.rst

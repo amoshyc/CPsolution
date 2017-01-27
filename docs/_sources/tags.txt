@@ -51,6 +51,7 @@ Data Structure
 - tag_trie
 - tag_linkedlist
 - tag_treap
+- tag_bst
 
 ************************
 String
@@ -96,6 +97,7 @@ Math
 - tag_fft
 - tag_gaussian
 - tag_gaussian_jordan
+- tag_lucas
 
 ************************
 Other
