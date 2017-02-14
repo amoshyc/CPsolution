@@ -20,7 +20,7 @@ Make a similar repo
 
 1. ``git clone <new repo> && cd <new repo>``
 2. ``sphinx-quickstart .``
-3. Append follow code to makefile.
+3. Append following code to makefile.
 
 .. code-block:: make
 
