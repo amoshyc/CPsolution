@@ -33,6 +33,7 @@ Specification
 
 .. note:: 最小點涵蓋
 
+假設共有 R 個 row, C 個 col，
 每個 row 編號成 [0, N)，
 每個 col 編號成 [N, N + c)，
 都視為一個 vertex
