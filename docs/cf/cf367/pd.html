@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -47,6 +49,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -87,7 +90,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorials.html">1. 常用演算法教學</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../cf.html">2. CF</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../cf.html#regular-round">Regular Round</a><ul class="current">
@@ -100,7 +106,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pa.html">[cf367] A. Beru-taxi</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pb.html">[cf367] B. Interesting drink</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pc.html">[cf367] C. Hard problem</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">[cf367] D. Vasiliy&#8217;s Multiset</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">[cf367] D. Vasiliy’s Multiset</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pe.html">[cf367] E. Working routine</a></li>
 </ul>
 </li>
@@ -135,8 +141,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../index.html">amoshyc's CPsolution</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">amoshyc's CPsolution</a>
+        
       </nav>
 
 
@@ -145,34 +153,51 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../cf.html">2. CF</a> &raquo;</li>
-      
+        
           <li><a href="index.html">#367</a> &raquo;</li>
-      
-    <li>[cf367] D. Vasiliy&#8217;s Multiset</li>
+        
+      <li>[cf367] D. Vasiliy’s Multiset</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="../../_sources/cf/cf367/pd.txt" rel="nofollow"> View page source</a>
+            
+            <a href="../../_sources/cf/cf367/pd.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
   <div class="section" id="cf367-d-vasiliy-s-multiset">
-<h1><a class="toc-backref" href="#id4">[cf367] D. Vasiliy&#8217;s Multiset</a><a class="headerlink" href="#cf367-d-vasiliy-s-multiset" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id4">[cf367] D. Vasiliy’s Multiset</a><a class="headerlink" href="#cf367-d-vasiliy-s-multiset" title="Permalink to this headline">¶</a></h1>
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
@@ -184,7 +209,7 @@
 <div class="contents topic" id="toc">
 <p class="topic-title first">TOC</p>
 <ul class="simple">
-<li><a class="reference internal" href="#cf367-d-vasiliy-s-multiset" id="id4">[cf367] D. Vasiliy&#8217;s Multiset</a><ul>
+<li><a class="reference internal" href="#cf367-d-vasiliy-s-multiset" id="id4">[cf367] D. Vasiliy’s Multiset</a><ul>
 <li><a class="reference internal" href="#id2" id="id5">題目</a></li>
 <li><a class="reference internal" href="#specification" id="id6">Specification</a></li>
 <li><a class="reference internal" href="#id3" id="id7">分析</a></li>
@@ -216,13 +241,13 @@
 <p class="first admonition-title">Note</p>
 <p class="last">trie 的經典題</p>
 </div>
-<p>事實上這是 trie 的經典題，不過競賽時我沒想到（不太會寫 trie...）。
+<p>事實上這是 trie 的經典題，不過競賽時我沒想到（不太會寫 trie…）。
 想到一個二分搜的做法，想法對了，可惜沒實作出來，賽後才 AC。</p>
 <hr class="docutils" />
 <p>首先，我們可以用 map + set 來模擬 multiset A，至於為什麼不直接用 multiset 呢？
 因為 c++ 的 multiset 不支援題目所要求的那種刪除。</p>
 <p>當詢問 max([x xor y] for y in A) 時，
-一個簡單的想法就是在 A 中找最 <strong>接近</strong> ~x （x 的 1&#8217;s complement）的數，
+一個簡單的想法就是在 A 中找最 <strong>接近</strong> ~x （x 的 1’s complement）的數，
 接近的意思是從高位開始比，舉個例子：</p>
 <p>如果 ~x = 0b10011，那 0b11100 會比 0b01100 更接近 ~x，寫成函式就是</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cmp</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
@@ -523,15 +548,18 @@
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pe.html" class="btn btn-neutral float-right" title="[cf367] E. Working routine" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pe.html" class="btn btn-neutral float-right" title="[cf367] E. Working routine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pc.html" class="btn btn-neutral" title="[cf367] C. Hard problem" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pc.html" class="btn btn-neutral" title="[cf367] C. Hard problem" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -565,13 +593,14 @@
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

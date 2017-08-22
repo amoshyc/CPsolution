@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -47,6 +49,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -87,7 +90,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorials.html">1. 常用演算法教學</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cf/cf.html">2. CF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../poj/poj.html">3. POJ</a></li>
@@ -133,8 +139,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../index.html">amoshyc's CPsolution</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">amoshyc's CPsolution</a>
+        
       </nav>
 
 
@@ -143,27 +151,44 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../other.html">6. Other</a> &raquo;</li>
-      
+        
           <li><a href="index.html">交大暑訓 2017 寒訓營</a> &raquo;</li>
-      
-    <li>[hdu5446] J. Unknown Treasure</li>
+        
+      <li>[hdu5446] J. Unknown Treasure</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="../../_sources/other/nctu_2017_winter/pj.txt" rel="nofollow"> View page source</a>
+            
+            <a href="../../_sources/other/nctu_2017_winter/pj.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -208,10 +233,10 @@
 <h2><a class="toc-backref" href="#id7">分析</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Lucas&#8217;s theorem + CRT</p>
+<p class="last">Lucas’s theorem + CRT</p>
 </div>
 <p>直接求肯定 TLE，用 factorial 預建表 + 模反元素也會 TLE，得想個好方法。</p>
-<p>說到求組合數，Lucas&#8217;s theorem 說：</p>
+<p>說到求組合數，Lucas’s theorem 說：</p>
 <div class="math">
 \[\begin{split}&amp;\binom{n}{m} \equiv \prod_{i=0}^k \binom{n_i}{m_i} \pmod p \\
 \text{where}&amp; \\
@@ -463,15 +488,18 @@
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../template/template.html" class="btn btn-neutral float-right" title="7. Template" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../../template/template.html" class="btn btn-neutral float-right" title="7. Template" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ph.html" class="btn btn-neutral" title="[hdu5444] H. Elven Postman" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ph.html" class="btn btn-neutral" title="[hdu5444] H. Elven Postman" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -505,13 +533,14 @@
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

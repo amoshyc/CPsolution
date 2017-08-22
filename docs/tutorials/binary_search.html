@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -47,6 +49,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -87,12 +90,15 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">1. 常用演算法教學</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">二分搜</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">敘述</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">分布為 0 ... 0 0 0 1 1 1 1 ... 1</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">分布為 1 ... 1 1 1 1 0 0 0 ... 0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">分布為 0 … 0 0 0 1 1 1 1 … 1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">分布為 1 … 1 1 1 1 0 0 0 … 0</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id5">特殊情形</a></li>
 </ul>
 </li>
@@ -122,8 +128,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">amoshyc's CPsolution</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">amoshyc's CPsolution</a>
+        
       </nav>
 
 
@@ -132,25 +140,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="tutorials.html">1. 常用演算法教學</a> &raquo;</li>
-      
-    <li>二分搜</li>
+        
+      <li>二分搜</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="../_sources/tutorials/binary_search.txt" rel="nofollow"> View page source</a>
+            
+            <a href="../_sources/tutorials/binary_search.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -170,8 +195,8 @@
 <ul class="simple">
 <li><a class="reference internal" href="#id1" id="id8">二分搜</a><ul>
 <li><a class="reference internal" href="#id2" id="id9">敘述</a><ul>
-<li><a class="reference internal" href="#id3" id="id10">分布為 0 ... 0 0 0 1 1 1 1 ... 1</a></li>
-<li><a class="reference internal" href="#id4" id="id11">分布為 1 ... 1 1 1 1 0 0 0 ... 0</a></li>
+<li><a class="reference internal" href="#id3" id="id10">分布為 0 … 0 0 0 1 1 1 1 … 1</a></li>
+<li><a class="reference internal" href="#id4" id="id11">分布為 1 … 1 1 1 1 0 0 0 … 0</a></li>
 <li><a class="reference internal" href="#id5" id="id12">特殊情形</a></li>
 </ul>
 </li>
@@ -184,7 +209,7 @@
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id9">敘述</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>只要存在某個連續的空間 S，
-與判斷函式 bool C(...)（回傳 0(false) 或 1(true)）在此空間中的分布為：</p>
+與判斷函式 bool C(…)（回傳 0(false) 或 1(true)）在此空間中的分布為：</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="o">...</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="o">...</span> <span class="mi">1</span>
 </pre></div>
 </div>
@@ -195,7 +220,7 @@
 <p>這種單調的形式，即可使用二分搜在 O(lg(<code class="docutils literal"><span class="pre">|S|</span></code>)) 的時間求出 0 與 1 的分隔位置。
 這時視題目題意，有時是要求分隔點的 0，有時是 1。</p>
 <div class="section" id="id3">
-<h3><a class="toc-backref" href="#id10">分布為 0 ... 0 0 0 1 1 1 1 ... 1</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id10">分布為 0 … 0 0 0 1 1 1 1 … 1</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>以分布為 0 ... 0 0 0 1 1 1 1 ... 1 為例
 假設 S = [a, b]，我們想找出分隔點的所在。
 我們設下界 lb = a, 上界 ub = b，
@@ -244,11 +269,11 @@ ub 停在分隔點的 1 上，即左邊數來第一個 1 上面。
 </tr>
 <tr class="row-odd"><td>lb/ub:</td>
 <td>lb</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
+<td>&#160;</td>
 <td>mid</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
+<td>&#160;</td>
 <td>ub</td>
 </tr>
 </tbody>
@@ -286,12 +311,12 @@ ub 停在分隔點的 1 上，即左邊數來第一個 1 上面。
 <td>1</td>
 </tr>
 <tr class="row-odd"><td>lb/ub:</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
 <td>lb</td>
 <td>mid</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>ub</td>
 </tr>
 </tbody>
@@ -329,20 +354,20 @@ ub 停在分隔點的 1 上，即左邊數來第一個 1 上面。
 <td>1</td>
 </tr>
 <tr class="row-odd"><td>lb/ub:</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
 <td>lb</td>
 <td>ub</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
 <p>程式終止。</p>
 </div>
 <div class="section" id="id4">
-<h3><a class="toc-backref" href="#id11">分布為 1 ... 1 1 1 1 0 0 0 ... 0</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id11">分布為 1 … 1 1 1 1 0 0 0 … 0</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>以分布為 1 ... 1 1 1 1 0 0 0 ... 0 為例
 假設 S = [a, b]，我們想找出分隔點的所在。
 我們設下界 lb = a, 上界 ub = b，
@@ -391,11 +416,11 @@ ub 停在分隔點的 0 上，即左邊數來第一個 0 上面。
 </tr>
 <tr class="row-odd"><td>lb/ub:</td>
 <td>lb</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
+<td>&#160;</td>
 <td>mid</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
+<td>&#160;</td>
 <td>ub</td>
 </tr>
 </tbody>
@@ -433,12 +458,12 @@ ub 停在分隔點的 0 上，即左邊數來第一個 0 上面。
 <td>0</td>
 </tr>
 <tr class="row-odd"><td>lb/ub:</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
 <td>lb</td>
 <td>mid</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 <td>ub</td>
 </tr>
 </tbody>
@@ -476,10 +501,10 @@ ub 停在分隔點的 0 上，即左邊數來第一個 0 上面。
 <td>0</td>
 </tr>
 <tr class="row-odd"><td>lb/ub:</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
 <td>lb</td>
 <td>mid</td>
 <td>ub</td>
@@ -519,13 +544,13 @@ ub 停在分隔點的 0 上，即左邊數來第一個 0 上面。
 <td>0</td>
 </tr>
 <tr class="row-odd"><td>lb/ub:</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
 <td>lb</td>
 <td>ub</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -560,7 +585,7 @@ ub 停在分隔點的 0 上，即左邊數來第一個 0 上面。
 <hr class="docutils" />
 <div class="section" id="id6">
 <h2><a class="toc-backref" href="#id13">模板</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<p>針對 0 ... 0 0 0 1 1 1 1 ... 1 分布的二分搜：</p>
+<p>針對 0 … 0 0 0 1 1 1 1 … 1 分布的二分搜：</p>
 <div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -606,7 +631,7 @@ ub 停在分隔點的 0 上，即左邊數來第一個 0 上面。
 <span class="c1">// ub 即為第一個 1 的所在</span>
 </pre></div>
 </td></tr></table></div>
-<p>針對 1 ... 1 1 1 1 0 0 0 ... 0 的：</p>
+<p>針對 1 … 1 1 1 1 0 0 0 … 0 的：</p>
 <div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -661,15 +686,18 @@ ub 停在分隔點的 0 上，即左邊數來第一個 0 上面。
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../cf/cf.html" class="btn btn-neutral float-right" title="2. CF" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../cf/cf.html" class="btn btn-neutral float-right" title="2. CF" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="tutorials.html" class="btn btn-neutral" title="1. 常用演算法教學" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="tutorials.html" class="btn btn-neutral" title="1. 常用演算法教學" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -703,13 +731,14 @@ ub 停在分隔點的 0 上，即左邊數來第一個 0 上面。
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

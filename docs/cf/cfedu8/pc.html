@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -47,6 +49,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -87,7 +90,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorials.html">1. 常用演算法教學</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../cf.html">2. CF</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../cf.html#regular-round">Regular Round</a></li>
@@ -126,8 +132,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../index.html">amoshyc's CPsolution</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">amoshyc's CPsolution</a>
+        
       </nav>
 
 
@@ -136,27 +144,44 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../cf.html">2. CF</a> &raquo;</li>
-      
+        
           <li><a href="index.html">Educational Round #8</a> &raquo;</li>
-      
-    <li>[cfedu8] C. Bear and String Distance</li>
+        
+      <li>[cfedu8] C. Bear and String Distance</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="../../_sources/cf/cfedu8/pc.txt" rel="nofollow"> View page source</a>
+            
+            <a href="../../_sources/cf/cfedu8/pc.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -185,8 +210,8 @@
 </div>
 <div class="section" id="id2">
 <h2><a class="reference external" href="http://codeforces.com/contest/628/problem/C">題目</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>定義二個字串的 distance 為每一項字母的差的總和，例如 dist(&#8216;abc&#8217;, &#8216;aae&#8217;) =
-dist(&#8216;a&#8217;, &#8216;a&#8217;) + dist(&#8216;b&#8217;, &#8216;a&#8217;), dist(&#8216;c&#8217;, &#8216;e&#8217;) = 0 + 1 + 2 = 3。
+<p>定義二個字串的 distance 為每一項字母的差的總和，例如 dist(‘abc’, ‘aae’) =
+dist(‘a’, ‘a’) + dist(‘b’, ‘a’), dist(‘c’, ‘e’) = 0 + 1 + 2 = 3。
 現給定一長度為 n 的字串 s，與一整數 k，請輸出任一個與 s 的 distance 為 k 的字串。
 如果解不存在請輸出 -1。</p>
 </div>
@@ -203,8 +228,8 @@ dist(&#8216;a&#8217;, &#8216;a&#8217;) + dist(&#8216;b&#8217;, &#8216;a&#8217;),
 <p class="first admonition-title">Note</p>
 <p class="last">建構式演算法，直接 greedy</p>
 </div>
-<p>針對 s[i]，盡量讓他發揮作用，即 dist(s[i], s&#8217;[i]) 越大越好，直到我們把 k 耗盡。
-要讓 dist(s[i], s&#8217;[i]) 越大越好，直覺的可以想到，就讓 s[i] 變成 &#8216;a&#8217; 或 &#8216;z&#8217;，
+<p>針對 s[i]，盡量讓他發揮作用，即 dist(s[i], s’[i]) 越大越好，直到我們把 k 耗盡。
+要讓 dist(s[i], s’[i]) 越大越好，直覺的可以想到，就讓 s[i] 變成 ‘a’ 或 ‘z’，
 看變成哪個的 distance 比較大就變哪個。</p>
 <p>-1 發生在把 s 的每一項都極大化後，k 仍未被耗盡。</p>
 </div>
@@ -312,15 +337,18 @@ dist(&#8216;a&#8217;, &#8216;a&#8217;) + dist(&#8216;b&#8217;, &#8216;a&#8217;),
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../cfedu7/index.html" class="btn btn-neutral float-right" title="Educational Round #7" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../cfedu7/index.html" class="btn btn-neutral float-right" title="Educational Round #7" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Educational Round #8" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="Educational Round #8" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -354,13 +382,14 @@ dist(&#8216;a&#8217;, &#8216;a&#8217;) + dist(&#8216;b&#8217;, &#8216;a&#8217;),
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

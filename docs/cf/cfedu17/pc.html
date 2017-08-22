@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -47,6 +49,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -87,7 +90,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorials.html">1. 常用演算法教學</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../cf.html">2. CF</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../cf.html#regular-round">Regular Round</a></li>
@@ -128,8 +134,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../index.html">amoshyc's CPsolution</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">amoshyc's CPsolution</a>
+        
       </nav>
 
 
@@ -138,27 +146,44 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../cf.html">2. CF</a> &raquo;</li>
-      
+        
           <li><a href="index.html">Educational Round #17</a> &raquo;</li>
-      
-    <li>[cfedu17] C. Two strings</li>
+        
+      <li>[cfedu17] C. Two strings</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="../../_sources/cf/cfedu17/pc.txt" rel="nofollow"> View page source</a>
+            
+            <a href="../../_sources/cf/cfedu17/pc.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -188,7 +213,7 @@
 </div>
 <div class="section" id="id2">
 <h2><a class="reference external" href="http://codeforces.com/contest/762/problem/C">題目</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>給定兩個字串 a, b。請移除 b 的一個區間（shortest consecutive characters) ，使得剩下的字串 b&#8217; 構成 a 的一個子序列（subsequence）。另外要最小化該區間的長度，請輸出移除區間後的 b。</p>
+<p>給定兩個字串 a, b。請移除 b 的一個區間（shortest consecutive characters) ，使得剩下的字串 b’ 構成 a 的一個子序列（subsequence）。另外要最小化該區間的長度，請輸出移除區間後的 b。</p>
 <p>※ 有可能把 b 的所有字元移除也有可能不移除任何字元。</p>
 </div>
 <div class="section" id="specification">
@@ -201,7 +226,7 @@
 <h2><a class="toc-backref" href="#id8">分析</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">「判定某個 b&#8217; 是不是 a 的子序列」可以用預建表解決</p>
+<p class="last">「判定某個 b’ 是不是 a 的子序列」可以用預建表解決</p>
 </div>
 <p>這題想了一個小時左右，終於被我想出來了，一開始還以為要用到 suffix array。</p>
 <hr class="docutils" />
@@ -220,7 +245,7 @@ b&#39;[s, t] = 移除區間 [s, t] 的 b
 <div class="highlight-none"><div class="highlight"><pre><span></span>b&#39;[s, t] sub a 可以保證 for all x &gt;= t, b&#39;[s, x] sub a
 </pre></div>
 </div>
-<p>這個應該想想就知道了。但要使用這個方法，我們得解決如何快速判斷「 某個 b&#8217; 是否是 a 的子序列」，這可以透過預建表的方法解決，定義:</p>
+<p>這個應該想想就知道了。但要使用這個方法，我們得解決如何快速判斷「 某個 b’ 是否是 a 的子序列」，這可以透過預建表的方法解決，定義:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pref</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span> <span class="n">j</span> <span class="n">such</span> <span class="n">that</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="n">sub</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">)</span>
 <span class="n">suff</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span> <span class="n">j</span> <span class="n">such</span> <span class="n">that</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">M</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="n">sub</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">)</span>
 </pre></div>
@@ -230,9 +255,9 @@ b&#39;[s, t] = 移除區間 [s, t] 的 b
 b 的各個 suffix 是哪個 a 的 suffix 的子序列。
 </pre></div>
 </div>
-<p>這個表可以使用爬行法來建，細節看程式碼吧。建好表後，判定「 b&#8217;[s, t] 是否是 a 的子序列」就可以透過檢查 pref[s - 1], suff[t + 1] 所對應該的這兩個區間是否檢查解決，讓我們直接圖解吧。</p>
+<p>這個表可以使用爬行法來建，細節看程式碼吧。建好表後，判定「 b’[s, t] 是否是 a 的子序列」就可以透過檢查 pref[s - 1], suff[t + 1] 所對應該的這兩個區間是否檢查解決，讓我們直接圖解吧。</p>
 <img alt="http://i.imgur.com/j2EdQ5G.png" src="http://i.imgur.com/j2EdQ5G.png" />
-<p>左圖是不重疊，即 b&#8217;[s, t] sub a；右圖是重疊了，所以 b&#8217;[s, t] 不是 a 的子序列。
+<p>左圖是不重疊，即 b’[s, t] sub a；右圖是重疊了，所以 b’[s, t] 不是 a 的子序列。
 因為 pref[i], suff[i] 可能是 -1，所以有一些情況要特判，整理起來就是:</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">C</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// [s, t] is removed</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">s</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">t</span> <span class="o">==</span> <span class="n">M</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">// 整個字串移除，空字串為任何子串的子序列</span>
@@ -477,15 +502,18 @@ b 的各個 suffix 是哪個 a 的 suffix 的子序列。
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../cfedu16/index.html" class="btn btn-neutral float-right" title="Educational Round #16" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../cfedu16/index.html" class="btn btn-neutral float-right" title="Educational Round #16" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pb.html" class="btn btn-neutral" title="[cfedu17] B. USB vs. PS/2" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pb.html" class="btn btn-neutral" title="[cfedu17] B. USB vs. PS/2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -519,13 +547,14 @@ b 的各個 suffix 是哪個 a 的 suffix 的子序列。
             VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
