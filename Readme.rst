@@ -12,8 +12,11 @@ This repo is written in rst + sphinx and be hold on `Github Pages <https://amosh
 Requirements
 ========================
 
-1. python3-sphinx (``sudo dnf install python3-sphinx``)
-2. rtd-theme (``pip3 install sphinx_rtd_theme``)
+1. sphinx
+2. sphinx-rtd-theme
+
+You can install theme manunually or use virtual environment with ``requirements.txt``. See `here <https://pip.pypa.io/en/stable/user_guide/#requirements-files>`_ for more info.
+
 
 Make a similar repo
 ========================
