@@ -36,7 +36,7 @@ Specification
 .. note:: 最大值最小化
 
 最大值最小化，標準的二分搜。
-二分搜教學請參 `這 <http://amoshycs.readthedocs.org/en/latest/tutorials/binary_search.html>`_
+二分搜教學請參 `這 <../tutorials/binary_search.html>`_
 
 判斷函式為::
 
