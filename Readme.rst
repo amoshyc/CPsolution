@@ -1,7 +1,7 @@
 amoshyc's CPsolution
 ##########################
 
-This repo contains some solutions to the problem of some online judges and competitive programming contest. The source code is mainly writtne in C++, sometimes Python. This is a new repo of the `old one <https://github.com/amoshyc/ojsolution>`_, which is maintained now. My codeforces account is ``amoshuangyc``, and poj's is ``amoshuang``.
+This repo contains some solutions to the problem of some online judges and competitive programming contest. The source code is mainly writtne in C++, sometimes Python. This is a new repo of the `old one <https://github.com/amoshyc/ojsolution>`_, which is not maintained now. My codeforces account is ``amoshuangyc``, and poj's is ``amoshuang``.
 
 This repo is written in rst + sphinx and be hold on `Github Pages <https://amoshyc.github.io/CPsolution/>`_. If you find any mistake, it's welcome to create an issue here at this repo or email me.
 
