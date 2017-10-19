@@ -230,6 +230,15 @@
 <li><span class="math">\(P^4_2 = 12\)</span></li>
 </ul>
 </div>
+<div class="section" id="q">
+<h3>圓排列 Q<a class="headerlink" href="#q" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+\[Q^n_k = \frac{n!}{k (n-k)!} = \frac{P^n_k}{k}\]</div>
+<ul class="simple">
+<li>從 <span class="math">\(n\)</span> 個不同球中取 <span class="math">\(k\)</span> 個，<strong>排成一個圓</strong>，圓只考慮相對位置，方法數為 <span class="math">\(Q^n_k\)</span></li>
+<li><span class="math">\(Q^4_2 = 6\)</span></li>
+</ul>
+</div>
 <div class="section" id="c">
 <h3>組合 C<a class="headerlink" href="#c" title="Permalink to this headline">¶</a></h3>
 <div class="math">
@@ -253,14 +262,26 @@ C^n_k &amp;= C^{n-1}_{k-1} + C^{n-1}_{k}\end{split}\]</div>
 <li><span class="math">\(H^4_2 = 10\)</span></li>
 </ul>
 </div>
-<div class="section" id="stirling-number">
-<h3>Stirling Number<a class="headerlink" href="#stirling-number" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="stirling-number-type-i">
+<h3>Stirling Number（Type I)<a class="headerlink" href="#stirling-number-type-i" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+\[\begin{split}S^n_0 &amp;=0 \\
+S^n_1 &amp;=1 \\
+S^n_k &amp;= S^{n-1}_{k-1} + (n-1) S^{n-1}_{k}\end{split}\]</div>
+<ul class="simple">
+<li>將 <span class="math">\(n\)</span> 顆 <strong>不同的球</strong> 丟進 <span class="math">\(k\)</span> 個 <strong>非空、相同</strong> 箱子，每個箱子為一 <strong>圓排列</strong> ，方法數為 <span class="math">\(S^n_k\)</span></li>
+<li>考慮第 <span class="math">\(n\)</span> 顆球：可以自己一個箱子，即其他 <span class="math">\(n-1\)</span> 個球丟進 <span class="math">\(k-1\)</span> 個箱子；也可以 <span class="math">\(n-1\)</span> 個球丟進 <span class="math">\(k\)</span> 個箱子，這顆球插到任一顆球旁邊。所以得 <span class="math">\(S^n_k = S^{n-1}_{k-1} + (n-1) S^{n-1}_{k}\)</span></li>
+<li><span class="math">\(S^4_2 = 11\)</span></li>
+</ul>
+</div>
+<div class="section" id="stirling-number-type-ii">
+<h3>Stirling Number（Type II)<a class="headerlink" href="#stirling-number-type-ii" title="Permalink to this headline">¶</a></h3>
 <div class="math">
 \[\begin{split}S^n_n &amp;= S^n_1 = 1 \\
 S^n_k &amp;= S^{n-1}_{k-1} + k S^{n-1}_{k}\end{split}\]</div>
 <ul class="simple">
-<li>將 <span class="math">\(n\)</span> 顆 <strong>不同的球</strong> 丟進 <span class="math">\(k\)</span> 個 <strong>非空、相同</strong> 箱子，方法數為 <span class="math">\(S^n_k\)</span></li>
-<li>考慮第 <span class="math">\(k\)</span> 顆球：可以自己一個箱子，即其他 <span class="math">\(n-1\)</span> 個球丟進 <span class="math">\(k-1\)</span> 個箱子；也可以 <span class="math">\(n-1\)</span> 個球丟進 <span class="math">\(k\)</span> 個箱子，這顆球丟進其中一個箱子。所以得 <span class="math">\(S^n_k = S^{n-1}_{k-1} + k S^{n-1}_{k}\)</span></li>
+<li>將 <span class="math">\(n\)</span> 顆 <strong>不同的球</strong> 丟進 <span class="math">\(k\)</span> 個 <strong>非空、相同</strong> 箱子，每一個箱子為一 <strong>集合</strong>，方法數為 <span class="math">\(S^n_k\)</span></li>
+<li>考慮第 <span class="math">\(n\)</span> 顆球：可以自己一個箱子，即其他 <span class="math">\(n-1\)</span> 個球丟進 <span class="math">\(k-1\)</span> 個箱子；也可以 <span class="math">\(n-1\)</span> 個球丟進 <span class="math">\(k\)</span> 個箱子，這顆球丟進其中一個箱子。所以得 <span class="math">\(S^n_k = S^{n-1}_{k-1} + k S^{n-1}_{k}\)</span></li>
 <li><span class="math">\(S^4_2 = 7\)</span></li>
 </ul>
 </div>
