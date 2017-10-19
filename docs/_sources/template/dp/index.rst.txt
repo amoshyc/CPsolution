@@ -13,6 +13,5 @@ DP
     cutting_sticks.rst
     lis.rst
     tsp.rst
-    repeat_combination.rst
 
 .. lcs.rst
