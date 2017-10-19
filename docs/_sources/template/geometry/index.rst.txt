@@ -6,3 +6,4 @@ Geometry
     :maxdepth: 1
 
     circle.rst
+    rectangle.rst
