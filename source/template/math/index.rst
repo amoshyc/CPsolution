@@ -15,4 +15,5 @@ Math
     lucas.rst
     crt.rst
     combinations.rst
+    dilworth.rst
     index_of_diagonal.rst
