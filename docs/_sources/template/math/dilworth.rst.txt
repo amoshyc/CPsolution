@@ -40,7 +40,7 @@ R x C 的格子中 N 個點 (r[i], c[i])。
 
 .. math:: 
 
-    S &= \{ (r_i, c_i | 0 \le i < N \} \\
+    S &= \{ (r_i, c_i) | 0 \le i < N \} \\
     \le &= (r_i \le r_j \land c_i \le c_j)
 
 題目所求分別為
