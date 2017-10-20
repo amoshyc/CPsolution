@@ -118,9 +118,10 @@
 <li class="toctree-l3"><a class="reference internal" href="combinations.html">排列組合</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">偏序集與 Dilworth</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">原理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">題目</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dp">程式碼（dp)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#multiset">程式碼（multiset)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">模板驗證</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">模板驗證</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="index_of_diagonal.html">2D 陣列對角線</a></li>
@@ -202,7 +203,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="dilworth">
-<h1><a class="toc-backref" href="#id10">偏序集與 Dilworth</a><a class="headerlink" href="#dilworth" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id11">偏序集與 Dilworth</a><a class="headerlink" href="#dilworth" title="Permalink to this headline">¶</a></h1>
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
@@ -213,17 +214,18 @@
 <div class="contents topic" id="toc">
 <p class="topic-title first">TOC</p>
 <ul class="simple">
-<li><a class="reference internal" href="#dilworth" id="id10">偏序集與 Dilworth</a><ul>
-<li><a class="reference internal" href="#id1" id="id11">原理</a></li>
-<li><a class="reference internal" href="#dp" id="id12">程式碼（dp)</a></li>
-<li><a class="reference internal" href="#multiset" id="id13">程式碼（multiset)</a></li>
-<li><a class="reference internal" href="#id9" id="id14">模板驗證</a></li>
+<li><a class="reference internal" href="#dilworth" id="id11">偏序集與 Dilworth</a><ul>
+<li><a class="reference internal" href="#id1" id="id12">原理</a></li>
+<li><a class="reference internal" href="#id3" id="id13">題目</a></li>
+<li><a class="reference internal" href="#dp" id="id14">程式碼（dp)</a></li>
+<li><a class="reference internal" href="#multiset" id="id15">程式碼（multiset)</a></li>
+<li><a class="reference internal" href="#id10" id="id16">模板驗證</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id1">
-<h2><a class="toc-backref" href="#id11">原理</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id12">原理</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>偏序集的定義請自看 <a class="reference external" href="https://zh.wikipedia.org/wiki/偏序關係">維基</a>。Dilworth 與其對偶定理適用於嚴格偏序，也適用於非嚴格偏序。</p>
 <ol class="arabic simple">
 <li>Dilworth：最小正鏈覆蓋 = 最長反鏈長度</li>
@@ -232,8 +234,9 @@
 <p>詳細證明請自行查資料，不過從 Hasse Diagram 就可以感覺出來~</p>
 <p>競賽中我只遇過二維的情況，所以以下都只以二維為例，程式碼不適用高維。
 如果有誰遇到，發個 issue 或送個 email 給我。</p>
+</div>
 <div class="section" id="id3">
-<h3>往右走或往下走<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h2><a class="toc-backref" href="#id13">題目</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>R x C 的格子中 N 個點 (r[i], c[i])。
 定義一次旅行為從任一個點出發，只能 <strong>往右走或往下走</strong> 。
 請問：
@@ -246,19 +249,6 @@
 <p>題目所求分別為
 1. 最長正鏈長度，即為最小反鏈覆蓋。
 2. 最小正鏈覆蓋，即為最長反鏈長度。</p>
-<div class="section" id="id4">
-<h4>最長正鏈長度<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
-<ol class="arabic simple">
-<li>將點排序，r 由小到大，相同時 c <strong>由小到大</strong></li>
-<li>在 c 上求最長 <strong>單調遞增</strong> 子序列，長度即為所求</li>
-</ol>
-</div>
-<div class="section" id="id5">
-<h4>最長反鏈長度<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
-<ol class="arabic simple">
-<li>將點排序，r 由小到大，相同時 c <strong>由小到大</strong></li>
-<li>在 c 上求最長 <strong>嚴格遞減</strong> 子序列，長度即為所求</li>
-</ol>
 <hr class="docutils" />
 <p>假設點分別為:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">B</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -266,20 +256,35 @@
 </div>
 <p>圖解如下。</p>
 <p>待補</p>
-</div>
+<div class="section" id="id4">
+<h3>只能往右走或往下走<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h4>最長正鏈長度<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li>將點排序，r 由小到大，相同時 c <strong>由小到大</strong></li>
+<li>在 c 上求最長 <strong>單調遞增</strong> 子序列，長度即為所求</li>
+</ol>
 </div>
 <div class="section" id="id6">
-<h3>只能往斜右下走<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>如果題目改成 <strong>只能往斜右下走，不能向右或向下</strong>，則演算法改成</p>
+<h4>最長反鏈長度<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li>將點排序，r 由小到大，相同時 c <strong>由小到大</strong></li>
+<li>在 c 上求最長 <strong>嚴格遞減</strong> 子序列，長度即為所求</li>
+</ol>
+</div>
+</div>
 <div class="section" id="id7">
-<h4>最長正鏈長度<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<h3>只能往斜右下走<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>如果題目改成 <strong>只能往斜右下走，不能向右或向下</strong>，則演算法改成</p>
+<div class="section" id="id8">
+<h4>最長正鏈長度<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
 <ol class="arabic simple">
 <li>將點排序，r 由小到大，相同時 c <strong>由大到小</strong></li>
 <li>在 c 上求最長 <strong>嚴格遞增</strong> 子序列，長度即為所求</li>
 </ol>
 </div>
-<div class="section" id="id8">
-<h4>最長反鏈長度<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id9">
+<h4>最長反鏈長度<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <ol class="arabic simple">
 <li>將點排序，r 由小到大，相同時 c <strong>由大到小</strong></li>
 <li>在 c 上求最長 <strong>單調遞減</strong> 子序列，長度即為所求</li>
@@ -291,7 +296,7 @@
 </div>
 </div>
 <div class="section" id="dp">
-<h2><a class="toc-backref" href="#id12">程式碼（dp)</a><a class="headerlink" href="#dp" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id14">程式碼（dp)</a><a class="headerlink" href="#dp" title="Permalink to this headline">¶</a></h2>
 <p>最長 <strong>嚴格遞增</strong> 子序列、最長 <strong>嚴格遞減</strong> 子序列:</p>
 <div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -350,10 +355,10 @@
 </td></tr></table></div>
 </div>
 <div class="section" id="multiset">
-<h2><a class="toc-backref" href="#id13">程式碼（multiset)</a><a class="headerlink" href="#multiset" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id15">程式碼（multiset)</a><a class="headerlink" href="#multiset" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="id9">
-<h2><a class="toc-backref" href="#id14">模板驗證</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h2><a class="toc-backref" href="#id16">模板驗證</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://gist.github.com/anonymous/de03aaf422ba3bff1dbf7e862653b83a">uva11368</a>
 <a class="reference external" href="https://gist.github.com/anonymous/4778427ec2ff50714569298820bc8865">ncpc2016 初賽 B</a></p>
 </div>
