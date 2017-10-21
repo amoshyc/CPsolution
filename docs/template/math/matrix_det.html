@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Matrix Determinant &mdash; amoshyc&#39;s CPsolution 1.0 documentation</title>
+  <title>矩陣 Determinant 與 Trace &mdash; amoshyc&#39;s CPsolution 1.0 documentation</title>
   
 
   
@@ -108,9 +108,10 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Math</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="fast_pow.html">快速冪</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fast_pow_matrix.html">矩陣快速冪</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Matrix Determinant</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">程式碼</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">模板驗證</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">矩陣 Determinant 與 Trace</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">原理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">程式碼</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">模板驗證</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gauss_jordan.html">Gaussian Jordan Elimination</a></li>
@@ -180,7 +181,7 @@
         
           <li><a href="index.html">Math</a> &raquo;</li>
         
-      <li>Matrix Determinant</li>
+      <li>矩陣 Determinant 與 Trace</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -199,8 +200,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="matrix-determinant">
-<h1><a class="toc-backref" href="#id3">Matrix Determinant</a><a class="headerlink" href="#matrix-determinant" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="determinant-trace">
+<h1><a class="toc-backref" href="#id5">矩陣 Determinant 與 Trace</a><a class="headerlink" href="#determinant-trace" title="Permalink to this headline">¶</a></h1>
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
@@ -211,19 +212,50 @@
 <div class="contents topic" id="toc">
 <p class="topic-title first">TOC</p>
 <ul class="simple">
-<li><a class="reference internal" href="#matrix-determinant" id="id3">Matrix Determinant</a><ul>
-<li><a class="reference internal" href="#id1" id="id4">程式碼</a></li>
-<li><a class="reference internal" href="#id2" id="id5">模板驗證</a></li>
+<li><a class="reference internal" href="#determinant-trace" id="id5">矩陣 Determinant 與 Trace</a><ul>
+<li><a class="reference internal" href="#id1" id="id6">原理</a></li>
+<li><a class="reference internal" href="#id3" id="id7">程式碼</a></li>
+<li><a class="reference internal" href="#id4" id="id8">模板驗證</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id1">
-<h2><a class="toc-backref" href="#id4">程式碼</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>整數版本，不使用浮點數。
-求 determinant，教學請參
-<a class="reference external" href="http://blog.csdn.net/zhoufenqin/article/details/7779707">http://blog.csdn.net/zhoufenqin/article/details/7779707</a></p>
-<p>用 Gaussian elimination （不是 Gaussian-Jordan elimination）把矩陣上三角化，主對角線的項的乘積即為答案</p>
+<h2><a class="toc-backref" href="#id6">原理</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>當矩陣中的每一項都是整數，矩陣的 trace 與 determinant 也會是整數。前者好求，但後者麻煩。
+Determinant 一般都是透過 Row Operation 都矩陣上三角化，三角化的過程中：</p>
+<div class="math">
+\[\begin{split}&amp;det(r_{ij}(A)) = -det(A) \\
+&amp;det(r_i^{(k)}(A)) = k \cdot det(A) \\
+&amp;det(r_{ij}^{(k)}(A)) = det(A)\end{split}\]</div>
+<p>三種列運算，第 1, 2 種會影響 determinant，要記得處理。不過本模板中只使用第 1, 3 種運算，所以只需考慮第一種情況。</p>
+<p>我們想避免使用浮點數來運算，因為會有誤差，我們可以使用輾轉相除法來代替，具體教學請參 <a class="reference external" href="&lt;http://blog.csdn.net/zhoufenqin/article/details/7779707">這裡</a> 。
+基本想法就如同我們用下列程式碼來求 gcd:</p>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span><span class="p">;</span>
+        <span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>只是我們把取餘數作用在整個 row 上。</p>
+<hr class="docutils" />
+<p>常見的考法為求矩陣特徵值的和與積，他們分別是該矩陣的 trace 與 determinant。</p>
+<div class="math">
+\[\begin{split}tr(A) &amp;= \sum_{i} \lambda_i \\
+det(A) &amp;= \prod_{i} \lambda_i\end{split}\]</div>
+<p>證明請參線代課本。</p>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id7">程式碼</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -253,42 +285,55 @@
 27
 28
 29
-30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
+30
+31
+32
+33
+34
+35
+36</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define sz(x) (int(x.size()))</span>
+<span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
 <span class="k">typedef</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">ll</span><span class="o">&gt;</span> <span class="n">vec</span><span class="p">;</span>
 <span class="k">typedef</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">vec</span><span class="o">&gt;</span> <span class="n">mat</span><span class="p">;</span>
 
-<span class="n">ll</span> <span class="nf">determinant</span><span class="p">(</span><span class="n">mat</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// square matrix</span>
-    <span class="k">const</span> <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">m</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-    <span class="n">ll</span> <span class="n">det</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
-            <span class="k">while</span> <span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
-                <span class="n">ll</span> <span class="n">q</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">m</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
-                <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
-                    <span class="n">m</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">q</span><span class="p">;</span>
-                <span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
-            <span class="p">}</span>
+<span class="n">ll</span> <span class="nf">trace</span><span class="p">(</span><span class="n">mat</span> <span class="n">A</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// square matrix</span>
+    <span class="n">ll</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">sz</span><span class="p">(</span><span class="n">A</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sum</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">sum</span><span class="p">;</span>
+<span class="p">}</span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">swap</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">m</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+<span class="n">ll</span> <span class="nf">determinant</span><span class="p">(</span><span class="n">mat</span> <span class="n">A</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// square matrix</span>
+    <span class="n">ll</span> <span class="n">det</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">sz</span><span class="p">(</span><span class="n">A</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">sz</span><span class="p">(</span><span class="n">A</span><span class="p">);</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">r2</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span> <span class="c1">// gcd</span>
+                <span class="n">ll</span> <span class="n">q</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">r1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="n">r2</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
+                <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">sz</span><span class="p">(</span><span class="n">A</span><span class="p">);</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+                    <span class="n">A</span><span class="p">[</span><span class="n">r1</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">r1</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">A</span><span class="p">[</span><span class="n">r2</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">q</span><span class="p">;</span>
+                <span class="n">swap</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">r1</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">swap</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
                 <span class="n">det</span> <span class="o">=</span> <span class="o">-</span><span class="n">det</span><span class="p">;</span>
             <span class="p">}</span>
         <span class="p">}</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
             <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
         <span class="k">else</span>
-            <span class="n">det</span> <span class="o">*=</span> <span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
+            <span class="n">det</span> <span class="o">*=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">det</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
 </div>
-<div class="section" id="id2">
-<h2><a class="toc-backref" href="#id5">模板驗證</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="../../uva/p684.html">uva684</a></p>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id8">模板驗證</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="../../uva/p684.html">uva684</a>
+<a class="reference external" href="https://gist.github.com/anonymous/797dd10f4666f77588884908b76ebff0">NCPC 2015 初賽 D</a></p>
 </div>
 </div>
 
