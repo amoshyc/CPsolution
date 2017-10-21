@@ -44,7 +44,7 @@
 .. math::
 
     C^n_n &= C^n_0 = 1 \\
-    C^n_k &= C^n_{n-k} = \frac{k!}{(n-k)!k!} = \frac{P^n_k}{k!} \\
+    C^n_k &= C^n_{n-k} = \frac{n!}{(n-k)!k!} = \frac{P^n_k}{k!} \\
     C^n_k &= C^{n-1}_{k-1} + C^{n-1}_{k}
 
 * 從 :math:`n` 個不同球中取 :math:`k` 個， **取出順序不影響** ，方法數為 :math:`C^n_k`
