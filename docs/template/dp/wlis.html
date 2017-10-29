@@ -247,20 +247,7 @@
 </pre></div>
 </div>
 <p>找 max 的部份我們想優化成 O(lgN)，目前 O(N) 是因為我們不知道哪個 dp[j] 對應的 A[j] 小於 A[i]。我們在 dp 陣列外，增加一個容器存 <strong>目前求出來的所有 dp 值（與他們對應的 A 值）</strong>，假設這個容器可以在 O(lgN) 的時間回答你： <strong>容器中，A 值小於某個詢問值的所有 dp 值中，最大的是誰</strong>。那演算法就簡單了，虛擬碼可以寫成:</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># dp: dp 陣列</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># dp: dp 陣列</span>
 <span class="c1"># C: 容器</span>
 
 <span class="c1"># base case</span>
@@ -275,7 +262,7 @@
 
 <span class="n">res</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>假設這個容器用一維陣列 S 來實現， <strong>陣列的 index 是 A 值，存的內容是 dp 值</strong> ，那查詢就變成一個區間最大值的詢問。
 S 初使化為 -INF，另外因為我們會用 A 的值域當 index，值域可能很大，S 陣列可能開不出來，
 但 A 最多只有 N 個不同值，所以我們先對 A 離散化。</p>
