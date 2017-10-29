@@ -104,66 +104,67 @@ Segment Tree
 .. code-block:: cpp
     :linenos:
 
-    const int INF = 0x3f3f3f3f;
-    const int MAX_N = 50000;
-    const int MAX_NN = (1 << 16); // bigger than MAX_N
-
+    template <class T>
     struct SegTree {
-        int NN; // size of tree
-        int seg[2 * MAX_NN]; // 0-based index, 2 * MAX_NN - 1 in fact
-        int dflt; // default val
+        int NN;            // tree size: 2 * NN - 1
+        T dflt;            // default val
+        vector<T> seg;     // 0-based index
 
-        void init(int n, int val) {
+        void init(int n, T val) {
             dflt = val;
-            NN = 1; while (NN < n) NN <<= 1;
-            fill(seg, seg + 2 * NN, dflt);
+            NN = 1;
+            while (NN < n)
+                NN <<= 1;
+            seg.clear();
+            seg.resize(2 * NN, dflt);
+        }
+
+        T func(T a, T b) {
+            return min(a, b);
         }
 
         void gather(int u, int l, int r) {
-            seg[u] = min(seg[u * 2 + 1], seg[u * 2 + 2]);
+            seg[u] = func(seg[u * 2 + 1], seg[u * 2 + 2]);
         }
 
         void build(int u, int l, int r) {
-            if (r - l == 1) return;
+            if (r - l == 1)
+                return;
             int m = (l + r) / 2;
             build(u * 2 + 1, l, m);
             build(u * 2 + 2, m, r);
             gather(u, l, r);
         }
 
-        int query(int a, int b, int u, int l, int r) {
-            if (l >= b || r <= a) return dflt;
-            if (l >= a && r <= b) return seg[u];
+        T query(int a, int b, int u, int l, int r) {
+            if (l >= b || r <= a)
+                return dflt;
+            if (l >= a && r <= b)
+                return seg[u];
             int m = (l + r) / 2;
-            int res1 = query(a, b, u * 2 + 1, l, m);
-            int res2 = query(a, b, u * 2 + 2, m, r);
-            return min(res1, res2);
+            T res1 = query(a, b, u * 2 + 1, l, m);
+            T res2 = query(a, b, u * 2 + 2, m, r);
+            return func(res1, res2);
         }
 
-        void update(int idx, int x, int u, int l, int r) {
-            if (idx < l || idx >= r) return;
-            if (idx == l && r - l == 1) { seg[u] = x; return; }
+        void update(int idx, T x, int u, int l, int r) {
+            if (idx < l || idx >= r)
+                return;
+            if (idx == l && r - l == 1) {
+                seg[u] = x;
+                return;
+            }
             int m = (l + r) / 2;
             update(idx, x, u * 2 + 1, l, m);
             update(idx, x, u * 2 + 2, m, r);
-            gather(u, l, r); // remember this
+            gather(u, l, r);
         }
     };
-
-    SegTree seg;
-
-    int main() {
-
-        seg.init(N, INF);
-        copy(A, A + N, seg.seg + seg.NN - 1);
-        seg.build(0, 0, seg.NN);
-
-    }
 
 
 ************************
 模板驗證
 ************************
 
- - [單點更新] `poj1769 <http://codepad.org/cQItxKrb>`_
+ - [單點更新] `poj1769 <https://gist.github.com/anonymous/4f21621cf6f59e2fdfc61e31c671e2cc>`_
  - [延遲標記] `poj3468 <http://codepad.org/pLLfo3d6>`_
