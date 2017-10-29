@@ -12,6 +12,7 @@ DP
     coin_change.rst
     cutting_sticks.rst
     lis.rst
+    wlis.rst
     tsp.rst
 
 .. lcs.rst
