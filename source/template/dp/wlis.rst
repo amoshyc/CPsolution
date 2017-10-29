@@ -133,3 +133,5 @@ S 初使化為 -INF，另外因為我們會用 A 的值域當 index，值域可�
 ************************
 模板驗證
 ************************
+
+`學校競程的題目 <https://gist.github.com/anonymous/4436b0afdfac0e1dff2fabdc4ca61a07>`_

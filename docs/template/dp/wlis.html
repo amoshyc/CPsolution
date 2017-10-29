@@ -198,7 +198,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="wlis">
-<h1><a class="toc-backref" href="#id2">WLIS 最大帶權遞增子序列</a><a class="headerlink" href="#wlis" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id3">WLIS 最大帶權遞增子序列</a><a class="headerlink" href="#wlis" title="Permalink to this headline">¶</a></h1>
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
@@ -209,10 +209,10 @@
 <div class="contents topic" id="toc">
 <p class="topic-title first">TOC</p>
 <ul class="simple">
-<li><a class="reference internal" href="#wlis" id="id2">WLIS 最大帶權遞增子序列</a><ul>
-<li><a class="reference internal" href="#dp-seg" id="id3">程式碼 1: dp + seg</a></li>
-<li><a class="reference internal" href="#dp-map" id="id4">程式碼 2: dp + map</a></li>
-<li><a class="reference internal" href="#id1" id="id5">模板驗證</a></li>
+<li><a class="reference internal" href="#wlis" id="id3">WLIS 最大帶權遞增子序列</a><ul>
+<li><a class="reference internal" href="#dp-seg" id="id4">程式碼 1: dp + seg</a></li>
+<li><a class="reference internal" href="#dp-map" id="id5">程式碼 2: dp + map</a></li>
+<li><a class="reference internal" href="#id1" id="id6">模板驗證</a></li>
 </ul>
 </li>
 </ul>
@@ -240,7 +240,7 @@
 </pre></div>
 </div>
 <div class="section" id="dp-seg">
-<h2><a class="toc-backref" href="#id3">程式碼 1: dp + seg</a><a class="headerlink" href="#dp-seg" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">程式碼 1: dp + seg</a><a class="headerlink" href="#dp-seg" title="Permalink to this headline">¶</a></h2>
 <p>使用線段樹優化原先 LIS O(N^2) 的做法，首先 dp 為:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span> <span class="n">total</span> <span class="n">weight</span> <span class="n">of</span> <span class="n">IS</span> <span class="n">ending</span> <span class="n">at</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">|</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">+</span> <span class="n">W</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -361,11 +361,12 @@ S 初使化為 -INF，另外因為我們會用 A 的值域當 index，值域可�
 邏輯腦那本書把這種 dp + seg 的題型歸類為「使用資料結構加速 dp」。第一次遇到的這種題型的人可能得想一下，可以參我的同題型的題解，例如 poj 3171。</p>
 </div>
 <div class="section" id="dp-map">
-<h2><a class="toc-backref" href="#id4">程式碼 2: dp + map</a><a class="headerlink" href="#dp-map" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">程式碼 2: dp + map</a><a class="headerlink" href="#dp-map" title="Permalink to this headline">¶</a></h2>
 <p>聽說有別種解法，坐等同學 AC 後解釋給我聽。</p>
 </div>
 <div class="section" id="id1">
-<h2><a class="toc-backref" href="#id5">模板驗證</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">模板驗證</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://gist.github.com/anonymous/4436b0afdfac0e1dff2fabdc4ca61a07">學校競程的題目</a></p>
 </div>
 </div>
 
