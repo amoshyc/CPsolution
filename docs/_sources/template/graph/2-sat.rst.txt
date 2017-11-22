@@ -14,7 +14,7 @@
 程式碼
 ************************
 
-:math:`(x_i \lor x_i)`，建邊 :math:`(\lnot x_i,\, x_j)`
+:math:`(x_i \lor x_i)`，建邊 :math:`(\lnot x_i,\, x_i)`
 :math:`(x_i \lor x_j)`，建邊 :math:`(\lnot x_i,\, x_j) ,\, (\lnot x_j,\, x_i)`
 
 .. code-block:: cpp
