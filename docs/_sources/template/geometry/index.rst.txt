@@ -7,3 +7,4 @@ Geometry
 
     circle.rst
     rectangle.rst
+    rect_area.rst
