@@ -12,6 +12,7 @@ Graph
     2-sat.rst
     tarjan_scc.rst
     kruskal.rst
+    second_mst.rst
 
     bipartite_matching.rst
     max_flow.rst
