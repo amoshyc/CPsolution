@@ -265,20 +265,24 @@
 <li>如果此邊是下邊，將此邊加入容器</li>
 <li>如果此邊是上邊，將此邊從容器中刪除。</li>
 </ol>
-<img alt="http://i.imgur.com/G90qPtS.png" src="http://i.imgur.com/G90qPtS.png" />
+<p>圖解如下：</p>
+<img alt="https://i.imgur.com/F1im9XO.jpg" src="https://i.imgur.com/F1im9XO.jpg" />
+<p>再一個例子：</p>
+<img alt="https://i.imgur.com/b0qrtEo.jpg" src="https://i.imgur.com/b0qrtEo.jpg" />
 <p>而這個容器可以使用線段樹來實作。
 修改自單點更新的線段樹，但注意是用離散化的 x 座標為分割點。
-每個節點多維護一個值 len 代表該子樹中線聯集總長。</p>
-<img alt="http://imgur.com/K5b48ts.png" src="http://imgur.com/K5b48ts.png" />
-<p>因為我們不會查詢除了整個 x 軸以外的區間（就是我們只會查詢線段樹 root 的 len），我們沒必要用延遲標記。針對操作：</p>
-<ol class="arabic simple">
-<li>加入線段 [x1, x2]：seg.update(x1, x2, +1)</li>
-<li>刪除線段 [x1, x2]：seg.update(x1, x2, -1)</li>
-<li>統計聯集總長：seg.root.len</li>
-</ol>
-<p>例如我們加入一個線段 <code class="docutils literal"><span class="pre">[10,</span> <span class="pre">25.5]</span></code>:</p>
-<img alt="http://imgur.com/WN6xdWp.png" src="http://imgur.com/WN6xdWp.png" />
-<p>如何維護 len 值請看程式碼。</p>
+每個節點多維護一個值 len 代表該子樹中線聯集總長。
+因為我們不會查詢除了整個 x 軸以外的區間（就是我們只會查詢線段樹 root 的 len），我們沒必要用延遲標記。</p>
+<p>概念為：</p>
+<img alt="https://i.imgur.com/IuJEJKy.jpg" src="https://i.imgur.com/IuJEJKy.jpg" />
+<p>離散化：</p>
+<img alt="https://i.imgur.com/yqZ0B5d.jpg" src="https://i.imgur.com/yqZ0B5d.jpg" />
+<p>所以三種操作分別對應的程式碼為:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>1. 加入線段 [x1, x2]：seg.update(x1, x2, +1)
+2. 刪除線段 [x1, x2]：seg.update(x1, x2, -1)
+3. 統計聯集總長：seg.root.len
+</pre></div>
+</div>
 </div>
 <div class="section" id="ac-code">
 <h2><a class="toc-backref" href="#id8">AC Code</a><a class="headerlink" href="#ac-code" title="Permalink to this headline">¶</a></h2>
